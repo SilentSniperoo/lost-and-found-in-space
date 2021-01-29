@@ -1,0 +1,366 @@
+#####################
+# Brief and Sources #
+#####################
+
+# A very standard .gitattributes file for most any repo.
+
+# Heavily based on:
+# - https://rehansaeed.com/gitattributes-best-practices/
+# - https://github.com/alexkaratarakis/gitattributes
+
+################################
+# Exclude files from exporting #
+################################
+
+.gitattributes export-ignore
+.gitignore     export-ignore
+.gitkeep       export-ignore
+
+############################################
+# Collapse Unity-generated files on GitHub #
+############################################
+
+*.asset  linguist-generated
+*.mat    linguist-generated
+*.meta   linguist-generated
+*.prefab linguist-generated
+*.unity  linguist-generated
+
+############################
+# Force File Type Behavior #
+############################
+
+# Specify line endings and Git Large File System (LFS) behavior.
+
+# Set default behaviour to automatically normalize line endings.
+# (Convert crlf => lf)
+* text=auto
+
+# Text files where line endings should be preserved
+*.patch -text
+
+# RC files (like .babelrc or .eslintrc)
+*.*rc text
+
+# Ignore files (like .npmignore or .gitignore)
+*.*ignore text
+
+# Force batch scripts to always use CRLF line endings so that if a repo is
+# accessed in Windows via a file share from Linux, the scripts will work.
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+*.{ps1,[pP][sS]1}    text eol=crlf
+
+# Force bash scripts to always use LF line endings so that if a repo is
+# accessed in Unix via a file share from Windows, the scripts will work.
+*.sh   text eol=lf
+*.bash text eol=lf
+*.fish text eol=lf
+
+# Archives
+*.7z                    filter=lfs diff=lfs merge=lfs -text
+*.br                    filter=lfs diff=lfs merge=lfs -text
+*.bz2                   filter=lfs diff=lfs merge=lfs -text
+*.ear                   filter=lfs diff=lfs merge=lfs -text
+*.gz                    filter=lfs diff=lfs merge=lfs -text
+*.jar                   filter=lfs diff=lfs merge=lfs -text
+*.[rR][aA][rR]          filter=lfs diff=lfs merge=lfs -text
+*.[tT][aA][rR]          filter=lfs diff=lfs merge=lfs -text
+*.[tT][aA][rR].[gG][zZ] filter=lfs diff=lfs merge=lfs -text
+*.[tT][gG][zZ]          filter=lfs diff=lfs merge=lfs -text
+*.war                   filter=lfs diff=lfs merge=lfs -text
+*.[zZ][iI][pP]          filter=lfs diff=lfs merge=lfs -text
+
+# Complex Documents
+*.[dD][oO][cC]     filter=lfs diff=astextplain merge=lfs -text
+*.[dD][oO][cC][xX] filter=lfs diff=astextplain merge=lfs -text
+*.[dD][oO][tT]     filter=lfs diff=astextplain merge=lfs -text
+*.[pP][dD][fF]     filter=lfs diff=astextplain merge=lfs -text
+*.[rR][tT][fF]     filter=lfs diff=astextplain merge=lfs -text
+*.bibtex text diff=bibtex
+*.tex    text diff=tex
+
+# SVG treated as an asset (binary) by default. We want it treated as text.
+*.svg  text
+# If you want to treat it as binary, use the following line instead.
+# *.svg  filter=lfs diff=lfs merge=lfs -text
+*.svgz filter=lfs diff=lfs merge=lfs -text
+
+# Graphics
+*.ai               filter=lfs diff=lfs merge=lfs -text
+*.bmp              filter=lfs diff=lfs merge=lfs -text
+*.cubemap          filter=lfs diff=lfs merge=lfs -text
+*.eps              filter=lfs diff=lfs merge=lfs -text
+*.exr              filter=lfs diff=lfs merge=lfs -text
+*.gif              filter=lfs diff=lfs merge=lfs -text
+*.gifv             filter=lfs diff=lfs merge=lfs -text
+*.hdr              filter=lfs diff=lfs merge=lfs -text
+*.ico              filter=lfs diff=lfs merge=lfs -text
+*.iff              filter=lfs diff=lfs merge=lfs -text
+*.jng              filter=lfs diff=lfs merge=lfs -text
+*.jp2              filter=lfs diff=lfs merge=lfs -text
+*.[jJ][pP][eE]     filter=lfs diff=lfs merge=lfs -text
+*.[jJ][pP][eE][gG] filter=lfs diff=lfs merge=lfs -text
+*.jpx              filter=lfs diff=lfs merge=lfs -text
+*.jxr              filter=lfs diff=lfs merge=lfs -text
+*.pict             filter=lfs diff=lfs merge=lfs -text
+*.[pP][nN][gG]     filter=lfs diff=lfs merge=lfs -text
+*.psb              filter=lfs diff=lfs merge=lfs -text
+*.psd              filter=lfs diff=lfs merge=lfs -text
+*.tga              filter=lfs diff=lfs merge=lfs -text
+*.[tT][iI][fF]     filter=lfs diff=lfs merge=lfs -text
+*.[tT][iI][fF][fF] filter=lfs diff=lfs merge=lfs -text
+*.wbmp             filter=lfs diff=lfs merge=lfs -text
+*.webp             filter=lfs diff=lfs merge=lfs -text
+
+# 3D Models
+*.3dm          filter=lfs diff=lfs merge=lfs -text
+*.3ds          filter=lfs diff=lfs merge=lfs -text
+*.blend        filter=lfs diff=lfs merge=lfs -text
+*.c4d          filter=lfs diff=lfs merge=lfs -text
+*.collada      filter=lfs diff=lfs merge=lfs -text
+*.dae          filter=lfs diff=lfs merge=lfs -text
+*.dxf          filter=lfs diff=lfs merge=lfs -text
+*.[fF][bB][xX] filter=lfs diff=lfs merge=lfs -text
+*.jas          filter=lfs diff=lfs merge=lfs -text
+*.lws          filter=lfs diff=lfs merge=lfs -text
+*.lxo          filter=lfs diff=lfs merge=lfs -text
+*.ma           filter=lfs diff=lfs merge=lfs -text
+*.max          filter=lfs diff=lfs merge=lfs -text
+*.mb           filter=lfs diff=lfs merge=lfs -text
+# Note duplicate
+*.[oO][bB][jJ] filter=lfs diff=lfs merge=lfs -text
+*.ply          filter=lfs diff=lfs merge=lfs -text
+*.skp          filter=lfs diff=lfs merge=lfs -text
+*.stl          filter=lfs diff=lfs merge=lfs -text
+*.ztl          filter=lfs diff=lfs merge=lfs -text
+
+# Audio Files
+*.aif  filter=lfs diff=lfs merge=lfs -text
+*.aiff filter=lfs diff=lfs merge=lfs -text
+*.it   filter=lfs diff=lfs merge=lfs -text
+*.kar  filter=lfs diff=lfs merge=lfs -text
+*.m4a  filter=lfs diff=lfs merge=lfs -text
+*.mid  filter=lfs diff=lfs merge=lfs -text
+*.midi filter=lfs diff=lfs merge=lfs -text
+*.mod  filter=lfs diff=lfs merge=lfs -text
+*.mp3  filter=lfs diff=lfs merge=lfs -text
+*.ogg  filter=lfs diff=lfs merge=lfs -text
+*.ra   filter=lfs diff=lfs merge=lfs -text
+*.s3m  filter=lfs diff=lfs merge=lfs -text
+*.wav  filter=lfs diff=lfs merge=lfs -text
+*.xm   filter=lfs diff=lfs merge=lfs -text
+
+# Videos
+*.3gp  filter=lfs diff=lfs merge=lfs -text
+*.3gpp filter=lfs diff=lfs merge=lfs -text
+*.as   filter=lfs diff=lfs merge=lfs -text
+*.asf  filter=lfs diff=lfs merge=lfs -text
+*.asx  filter=lfs diff=lfs merge=lfs -text
+*.avi  filter=lfs diff=lfs merge=lfs -text
+*.fla  filter=lfs diff=lfs merge=lfs -text
+*.flv  filter=lfs diff=lfs merge=lfs -text
+*.m4v  filter=lfs diff=lfs merge=lfs -text
+*.mng  filter=lfs diff=lfs merge=lfs -text
+*.mov  filter=lfs diff=lfs merge=lfs -text
+*.mp4  filter=lfs diff=lfs merge=lfs -text
+*.mpeg filter=lfs diff=lfs merge=lfs -text
+*.mpg  filter=lfs diff=lfs merge=lfs -text
+*.ogv  filter=lfs diff=lfs merge=lfs -text
+*.swc  filter=lfs diff=lfs merge=lfs -text
+*.swf  filter=lfs diff=lfs merge=lfs -text
+*.webm filter=lfs diff=lfs merge=lfs -text
+*.wmv  filter=lfs diff=lfs merge=lfs -text
+
+# Fonts
+*.eot   filter=lfs diff=lfs merge=lfs -text
+*.otf   filter=lfs diff=lfs merge=lfs -text
+*.ttf   filter=lfs diff=lfs merge=lfs -text
+*.woff  filter=lfs diff=lfs merge=lfs -text
+*.woff2 filter=lfs diff=lfs merge=lfs -text
+
+# Source Files
+*.c          text diff=c
+*.h          text diff=c
+*.cpp        text diff=cpp
+*.hpp        text diff=cpp
+*.c++        text diff=cpp
+*.h++        text diff=cpp
+*.cc         text diff=cpp
+*.hh         text diff=cpp
+*.cxx        text diff=cpp
+*.cs         text diff=csharp
+*.java       text diff=java
+*.gradle     text diff=java
+*.gradle.kts text diff=java
+*.pxd        text diff=python
+*.py         text diff=python
+*.py3        text diff=python
+*.pyw        text diff=python
+*.pyx        text diff=python
+*.pyz        text diff=python
+*.pyi        text diff=python
+*.css        text diff=css
+*.scss       text diff=css
+*.htm        text diff=html
+*.html       text diff=html
+*.xhtml      text diff=html
+*.php        text diff=php
+*.rb         text diff=ruby
+
+# Other Plainish Text Documents
+*.           text
+*.adoc       text
+*.cginc      text
+*.coffee     text
+*.csv        text
+*.df         text
+*.inc        text
+*.ini        text
+*.ipynb      text
+*.js         text
+*.json       text
+*.jsp        text
+*.jspf       text
+*.jspx       text
+*.jsx        text
+*.less       text
+*.ls         text
+*.map        text -diff
+*.markdown   text
+*.md         text
+*.mdown      text
+*.mdtext     text
+*.mdtxt      text
+*.mdwn       text
+*.mkd        text
+*.mkdn       text
+*.od         text
+*.onlydata   text
+*.pl         text
+*.properties text
+*.sass       text
+*.scm        text
+*.shader     text
+*.sql        text
+*.styl       text
+*.tab        text
+*.tag        text
+*.tagx       text
+*.textile    text
+*.tld        text
+*.toml       text
+*.ts         text
+*.tsv        text
+*.tsx        text
+*.txt        text
+*.xml        text
+*.yaml       text
+*.yml        text
+
+# Standalone Files (no extension)
+AUTHORS      text
+CHANGELOG    text
+CHANGES      text
+CONTRIBUTING text
+COPYING      text
+COPYRIGHT    text
+INSTALL      text
+LICENSE      text
+NEWS         text
+README       text
+TODO         text
+
+# Templates
+*.dot        text
+*.ejs        text
+*.haml       text
+*.handlebars text
+*.hbs        text
+*.hbt        text
+*.jade       text
+*.latte      text
+*.mustache   text
+*.njk        text
+*.phtml      text
+*.tmpl       text
+*.tpl        text
+*.twig       text
+*.vue        text
+
+# Configs
+.editorconfig     text
+.env              text
+.gitattributes    text
+.gitconfig        text
+.htaccess         text
+*.cnf             text
+*.conf            text
+*.config          text
+*.lock            text -diff
+*.toml            text
+*.yaml            text
+*.yml             text
+browserslist      text
+Dockerfile        text
+makefile          text
+Makefile          text
+package-lock.json text -diff
+Procfile          text
+
+# Unity YAML
+*.anim              merge=unityyamlmerge eol=lf
+*.asset             merge=unityyamlmerge eol=lf
+*.controller        merge=unityyamlmerge eol=lf
+*.mat               merge=unityyamlmerge eol=lf
+*.meta              merge=unityyamlmerge eol=lf
+*.physicMaterial    merge=unityyamlmerge eol=lf
+*.physicMaterial2D  merge=unityyamlmerge eol=lf
+*.physicsMaterial   merge=unityyamlmerge eol=lf
+*.physicsMaterial2D merge=unityyamlmerge eol=lf
+*.prefab            merge=unityyamlmerge eol=lf
+*.unity             merge=unityyamlmerge eol=lf
+
+# Compiled Object Files
+*.class filter=lfs diff=lfs merge=lfs -text
+*.slo   filter=lfs diff=lfs merge=lfs -text
+*.lo    filter=lfs diff=lfs merge=lfs -text
+*.o     filter=lfs diff=lfs merge=lfs -text
+# Note duplicate
+*.obj   filter=lfs diff=lfs merge=lfs -text
+
+# Precompiled Headers
+*.gch filter=lfs diff=lfs merge=lfs -text
+*.pch filter=lfs diff=lfs merge=lfs -text
+
+# Compiled Dynamic Libraries
+*.dll   filter=lfs diff=lfs merge=lfs -text
+*.dylib filter=lfs diff=lfs merge=lfs -text
+*.pdb   filter=lfs diff=lfs merge=lfs -text
+*.so    filter=lfs diff=lfs merge=lfs -text
+
+# Compiled Static Libraries
+*.a   filter=lfs diff=lfs merge=lfs -text
+*.la  filter=lfs diff=lfs merge=lfs -text
+*.lai filter=lfs diff=lfs merge=lfs -text
+*.lib filter=lfs diff=lfs merge=lfs -text
+
+# Executables / Installers
+*.apk          filter=lfs diff=lfs merge=lfs -text
+*.app          filter=lfs diff=lfs merge=lfs -text
+*.db           filter=lfs diff=lfs merge=lfs -text
+*.exe          filter=lfs diff=lfs merge=lfs -text
+*.out          filter=lfs diff=lfs merge=lfs -text
+*.p            filter=lfs diff=lfs merge=lfs -text
+*.pickle       filter=lfs diff=lfs merge=lfs -text
+*.pkl          filter=lfs diff=lfs merge=lfs -text
+*.pyc          filter=lfs diff=lfs merge=lfs -text
+*.pyd          filter=lfs diff=lfs merge=lfs -text
+*.pyo          filter=lfs diff=lfs merge=lfs -text
+*.unitypackage filter=lfs diff=lfs merge=lfs -text
+
+# Other Miscellaneous Files
+*.jks        filter=lfs diff=lfs merge=lfs -text
+*.reason     filter=lfs diff=lfs merge=lfs -text
+*.rns        filter=lfs diff=lfs merge=lfs -text
+*.skel.bytes filter=lfs diff=lfs merge=lfs -text
