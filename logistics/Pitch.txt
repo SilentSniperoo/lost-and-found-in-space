@@ -1,0 +1,9 @@
+The lost and found has gotten out of hand! As the custodian of The Intergalactic Space Mall, solve puzzles and riddles to find misplaced items and return them to the mall's visitors.
+
+- Single player angled side scroller (think Kindergarten or Double Dragon camera angle).
+- The goal of the game is to complete the main quest by delivering a particularly important item to its owner, while returning other items to their owners as side quests (either obstacles to, distractions from, or clues for the main quest).
+- Delivering the correct items to the correct visitors may require solving riddles, visual puzzles, and environmental puzzles.
+- The goal of the game must be completed before the time runs out, so completing all quests in a single playthrough will not be possible.
+- Requires 2D art with movement and interaction mechanics.
+- We currently have 5 people on our team, but we have no one dedicated to sound design.
+- Stretch goal contents include more puzzles, NPCs, and flavor dialogue.

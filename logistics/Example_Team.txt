@@ -1,0 +1,30 @@
+Befuddle Drops Studios
+
+AwesomeSauce#3021, Dustin Henderson, Programming, PST
+FeralFlyer#9840, Hiccup Haddock, Programming, PST
+Faller#1114, Mason Pines, Design, PST
+HappyTrees#6471, Bob Ross, Art, GMT
+
+Mentoring Support: Every day at 8:00PM PST
+
+
+FORMAT:
+
+Name Discord Username, (first and last), Interests (Art, Design, Music, Programming), Timezone
+
+//
+NOTES:
+//
+
+Separate each by a comma.
+
+Intersts helps us know your team configuration.
+
+If interesed in getting mentoring from our staff, faculty, and industry alumni 
+please indicate in your roster what times you would like mentors to drop in, if available.
+
+Send to onorati.c@digipen.edu when done to get your team channels.
+
+Please name the file with the following format:
+
+TeamName.txt
