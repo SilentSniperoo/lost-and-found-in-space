@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rigid;
 
+    bool mouseIsMostRecent = false;
+    Vector3 mouseWorldPosition = Vector2.zero;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,10 +33,29 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 result = Vector2.zero;
         if (Input.anyKey)
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) result.y += 1;
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) result.y -= 1;
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) result.x -= 1;
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) result.x += 1;
+        {
+            mouseIsMostRecent = false;
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) result.y += 1;
+            if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) result.y -= 1;
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) result.x -= 1;
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) result.x += 1;
+        }
+        if (Input.GetMouseButton(0) || Input.GetMouseButton(1) || Input.GetMouseButton(2))
+        {
+            print("Hullo");
+            mouseIsMostRecent = true;
+            mouseWorldPosition = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+        }
+        if (mouseIsMostRecent)
+        {
+            result = mouseWorldPosition - transform.position;
+            result.x /= speed.x;
+            result.y /= speed.y;
+            if (result.magnitude < 0.25)
+            {
+                result = Vector2.zero;
+            }
+        }
         return result.normalized;
     }
 
