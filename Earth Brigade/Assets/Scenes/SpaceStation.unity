@@ -850,12 +850,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1217572006}
+  cam: {fileID: 1515818966}
   speed: {x: 10, y: 5}
   acceleration: {x: 5, y: 2.5}
   highBound: 5
   lowBound: -8
-  highBoundScale: 0.75
+  highBoundScale: 0.65
   lowBoundScale: 1
+  highBoundCamSize: 5.5
+  lowBoundCamSize: 7
 --- !u!1 &885451951
 GameObject:
   m_ObjectHideFlags: 0

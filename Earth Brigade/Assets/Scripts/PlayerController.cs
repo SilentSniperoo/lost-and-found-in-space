@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject sprite;
+    public Camera cam;
 
     public Vector2 speed = new Vector2(10, 5);
     public Vector2 acceleration = new Vector2(10, 5);
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public float lowBound = -8;
     public float highBoundScale = 0.5f;
     public float lowBoundScale = 1;
+    public float highBoundCamSize = 4;
+    public float lowBoundCamSize = 5;
 
     Rigidbody2D rigid;
 
@@ -55,5 +58,6 @@ public class PlayerController : MonoBehaviour
 
         float heightRatio = (transform.position.y - lowBound) / (highBound - lowBound);
         transform.localScale = Vector3.one * Mathf.LerpUnclamped(lowBoundScale, highBoundScale, heightRatio);
+        cam.orthographicSize = Mathf.Lerp(lowBoundCamSize, highBoundCamSize, heightRatio);
     }
 }
