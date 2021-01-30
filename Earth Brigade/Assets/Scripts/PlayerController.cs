@@ -10,6 +10,11 @@ public class PlayerController : MonoBehaviour
     public Vector2 speed = new Vector2(10, 5);
     public Vector2 acceleration = new Vector2(10, 5);
 
+    public float highBound = 5;
+    public float lowBound = -8;
+    public float highBoundScale = 0.5f;
+    public float lowBoundScale = 1;
+
     Rigidbody2D rigid;
 
     // Start is called before the first frame update
@@ -37,5 +42,18 @@ public class PlayerController : MonoBehaviour
         velocity.x = Mathf.Lerp(velocity.x, input.x * speed.x, acceleration.x * Time.deltaTime);
         velocity.y = Mathf.Lerp(velocity.y, input.y * speed.y, acceleration.y * Time.deltaTime);
         rigid.velocity = velocity;
+
+        float turnThreshold = input.x + acceleration.x * velocity.x / speed.x;
+        if (turnThreshold > 1)
+        {
+            sprite.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (turnThreshold < -1)
+        {
+            sprite.transform.localScale = new Vector3(1, 1, 1);
+        }
+
+        float heightRatio = (transform.position.y - lowBound) / (highBound - lowBound);
+        transform.localScale = Vector3.one * Mathf.LerpUnclamped(lowBoundScale, highBoundScale, heightRatio);
     }
 }
