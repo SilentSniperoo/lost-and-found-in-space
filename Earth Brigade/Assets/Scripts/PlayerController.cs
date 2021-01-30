@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     bool mouseIsMostRecent = false;
     Vector3 mouseWorldPosition = Vector2.zero;
 
+    [HideInInspector, System.NonSerialized]
+    public bool inputCapturedByHUD = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,10 @@ public class PlayerController : MonoBehaviour
     Vector2 getInput()
     {
         Vector2 result = Vector2.zero;
+        if (inputCapturedByHUD)
+        {
+            return result;
+        }
         if (Input.anyKey)
         {
             mouseIsMostRecent = false;
@@ -42,7 +49,6 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetMouseButton(0) || Input.GetMouseButton(1) || Input.GetMouseButton(2))
         {
-            print("Hullo");
             mouseIsMostRecent = true;
             mouseWorldPosition = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
         }
