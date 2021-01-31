@@ -663,7 +663,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.08, y: 0.85}
   m_AnchorMax: {x: 0.92, y: 0.98}
-  m_AnchoredPosition: {x: 0.31999207, y: 0}
+  m_AnchoredPosition: {x: -40, y: -30}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1815413125
@@ -703,7 +703,6 @@ GameObject:
   - component: {fileID: 1999598829}
   - component: {fileID: 1999598828}
   - component: {fileID: 1999598827}
-  - component: {fileID: 1999598826}
   m_Layer: 5
   m_Name: Game Overlay
   m_TagString: Untagged
@@ -728,25 +727,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 767, y: -400}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1999598826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1999598824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21b9a32545aed9642ad2d98fc5ab8724, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &1999598827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -780,7 +763,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a78ec68dc10ef6444a64433a9fe3b695, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 32c00585930a97344a8ca77dfcc31086, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
