@@ -10,6 +10,8 @@ public class GameTimer : MonoBehaviour
     public Image tensSecondsImage;
     public Image onesSecondsImage;
 
+    GameObject gameController;
+
     [Range(0, 9)]
     public int minutes = 3;
     [Range(0, 59)]
@@ -20,6 +22,7 @@ public class GameTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameController = GameObject.FindGameObjectWithTag("GameController");
         updateTimerSprites();
     }
 
@@ -40,6 +43,10 @@ public class GameTimer : MonoBehaviour
         {
             minutes = 0;
             seconds = 0;
+        }
+        if (minutes <= 0 && seconds <= 0)
+        {
+            gameController.SendMessage("GameOver", true);
         }
 
         updateTimerSprites();
