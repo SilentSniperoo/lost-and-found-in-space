@@ -14,10 +14,10 @@ public class PersonControllerEditor : Editor
         PersonController person = target as PersonController;
         if (!person) return;
 
-        Transform spriteTransform = person.transform.Find("CharacterSprite");
+        Transform spriteTransform = person.transform.Find("Sprite");
         if (!spriteTransform)
         {
-            Debug.LogWarning("No child object named 'CharacterSprite' on '" + person.gameObject.name + "'", person.gameObject);
+            Debug.LogWarning("No child object named 'Sprite' on '" + person.gameObject.name + "'", person.gameObject);
             return;
         }
 

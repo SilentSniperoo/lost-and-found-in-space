@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DialogueController : MonoBehaviour
 {
     public Dialogue thankYouUI;
+    public Dialogue pickupUI;
     public List<Dialogue> puzzleUI;
 
     [HideInInspector, System.NonSerialized]
@@ -40,6 +41,28 @@ public class DialogueController : MonoBehaviour
         {
             openPuzzleUI((int)person.problem);
         }
+    }
+
+    PickupController pickup;
+
+    public void targetPickup(PickupController pickupToExamine)
+    {
+        pickup = pickupToExamine;
+    }
+
+    public void untargetPickup(PickupController pickupToExamine)
+    {
+        if (pickup == pickupToExamine)
+        {
+            pickup = null;
+        }
+    }
+
+    public void examinePickup()
+    {
+        if (!pickup) return;
+
+        nextUI = pickupUI;
     }
 
     public void close()

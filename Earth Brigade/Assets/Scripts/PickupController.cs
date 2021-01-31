@@ -2,27 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Problem
-{
-    Riddle,
-    MissingWords,
-    JumbledSentences,
-    FlippedAndRotatedWords
-}
-
 [RequireComponent(typeof(DepthScaler))]
-public class PersonController : MonoBehaviour
+public class PickupController : MonoBehaviour
 {
     GameObject highlight;
     DialogueController dialogueController;
 
-    public bool problemSolved = false;
-
-    public Problem problem;
+    public Sprite owner;
 
     private void Awake()
     {
-        gameObject.tag = "Person";
+        gameObject.tag = "Item";
     }
 
     // Start is called before the first frame update
@@ -46,7 +36,7 @@ public class PersonController : MonoBehaviour
         }
         if (dialogueController)
         {
-            dialogueController.targetPerson(this);
+            dialogueController.targetPickup(this);
         }
     }
 
@@ -58,7 +48,7 @@ public class PersonController : MonoBehaviour
         }
         if (dialogueController)
         {
-            dialogueController.untargetPerson(this);
+            dialogueController.untargetPickup(this);
         }
     }
 
@@ -66,7 +56,7 @@ public class PersonController : MonoBehaviour
     {
         if (dialogueController)
         {
-            dialogueController.talkToPerson();
+            dialogueController.examinePickup();
         }
     }
 }
