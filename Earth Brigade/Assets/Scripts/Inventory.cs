@@ -39,6 +39,10 @@ public class Inventory : MonoBehaviour
             slots[slot].sprite = null;
             gameController.SendMessage("GainPoint");
         }
+        else
+        {
+            gameController.SendMessage("LosePoint");
+        }
     }
 
     // Start is called before the first frame update

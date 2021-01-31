@@ -15,4 +15,9 @@ public class GameController : MonoBehaviour
     {
         ScoreStatus.Score += 1;
     }
+
+    void LosePoint()
+    {
+        ScoreStatus.Score -= 1;
+    }
 }
