@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     void GameOver(bool timeout)
     {
         ScoreStatus.Timeout = timeout;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     void GainPoint()
