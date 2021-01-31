@@ -1,12 +1,20 @@
 fileFormatVersion: 2
-guid: 34c3073d711c66c4ca44eac0ddcbd3f3
+<<<<<<< HEAD
+guid: 8bc174adfb13c9140bfdaba49105cc9b
+=======
+guid: dbfe7f32ac4eff94486c099f82c11cbc
+>>>>>>> e7cf872... Do it!
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
+<<<<<<< HEAD
+    enableMipMap: 1
+=======
     enableMipMap: 0
+>>>>>>> e7cf872... Do it!
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -34,6 +42,15 @@ TextureImporter:
     filterMode: -1
     aniso: 2
     mipBias: -100
+<<<<<<< HEAD
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 1
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+=======
     wrapU: 1
     wrapV: 1
     wrapW: 0
@@ -41,17 +58,24 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 1
+>>>>>>> e7cf872... Do it!
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.49820212, y: 0.14874221}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
+<<<<<<< HEAD
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 0
+=======
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
+>>>>>>> e7cf872... Do it!
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
@@ -119,6 +143,8 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD
+=======
   - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 8192
@@ -131,13 +157,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+>>>>>>> e7cf872... Do it!
   spriteSheet:
     serializedVersion: 2
     sprites: []
     outline: []
     physicsShape: []
     bones: []
+<<<<<<< HEAD
+    spriteID: 
+=======
     spriteID: 5e97eb03825dee720800000000000000
+>>>>>>> e7cf872... Do it!
     internalID: 0
     vertices: []
     indices: 
