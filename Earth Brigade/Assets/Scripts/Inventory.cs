@@ -8,6 +8,8 @@ public class Inventory : MonoBehaviour
     public Image[] slots = new Image[3];
     PickupController[] slotData = new PickupController[3];
 
+    GameObject gameController;
+
     DialogueController dialogueController;
 
     public void AddItem()
@@ -35,12 +37,14 @@ public class Inventory : MonoBehaviour
             dialogueController.person.problemSolved = true;
             dialogueController.talkToPerson();
             slots[slot].sprite = null;
+            gameController.SendMessage("GainPoint");
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        gameController = GameObject.FindGameObjectWithTag("GameController");
         dialogueController = FindObjectOfType<DialogueController>();
 
         foreach (var slot in slots)
