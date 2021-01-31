@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject sprite;
+    public SpriteRenderer spriteRenderer;
     public Camera cam;
 
     public Vector2 speed = new Vector2(10, 5);
@@ -23,11 +24,23 @@ public class PlayerController : MonoBehaviour
     [HideInInspector, System.NonSerialized]
     public bool inputCapturedByHUD = false;
 
+    public float animateSpeed = 0.5f;
+
+    Sprite sprite1;
+    public Sprite sprite2;
+
     // Start is called before the first frame update
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         scaler = GetComponent<DepthScaler>();
+        sprite1 = spriteRenderer.sprite;
+        InvokeRepeating("toggleSprite", animateSpeed, animateSpeed);
+    }
+
+    void toggleSprite()
+    {
+        spriteRenderer.sprite = spriteRenderer.sprite == sprite1 ? sprite2 : sprite1;
     }
 
     Vector2 getInput()

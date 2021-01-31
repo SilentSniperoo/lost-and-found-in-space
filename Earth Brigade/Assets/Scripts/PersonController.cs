@@ -24,6 +24,11 @@ public class PersonController : MonoBehaviour
 
     public Problem problem;
 
+    public float animateSpeed = 0.5f;
+
+    public Sprite sprite1;
+    public Sprite sprite2;
+
     private void Awake()
     {
         gameObject.tag = "Person";
@@ -35,11 +40,20 @@ public class PersonController : MonoBehaviour
         highlight = transform.Find("Highlight").gameObject;
         dialogueController = FindObjectOfType<DialogueController>();
         Untargeted();
+        //InvokeRepeating("toggleSprite", animateSpeed, animateSpeed);
+        Invoke("toggleSprite", animateSpeed + Random.Range(-0.1f, 0.1f));
     }
 
     // Update is called once per frame
     void Update()
     {
+    }
+
+    void toggleSprite()
+    {
+        SpriteRenderer renderer = getSpriteRenderer(getSpriteTransform());
+        renderer.sprite = renderer.sprite == sprite1 ? sprite2 : sprite1;
+        Invoke("toggleSprite", animateSpeed + Random.Range(-0.1f, 0.1f));
     }
 
     void Targeted()

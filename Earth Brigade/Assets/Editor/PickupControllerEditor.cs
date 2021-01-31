@@ -19,6 +19,7 @@ public class PickupControllerEditor : Editor
         SpriteRenderer renderer = pickup.getSpriteRenderer(spriteTransform);
         if (!renderer) return;
 
+        EditorGUI.BeginChangeCheck();
         Sprite ownerSprite = EditorGUILayout.ObjectField("Owner Image", pickup.owner, typeof(Sprite), false) as Sprite;
         if (pickup.owner != ownerSprite)
         {
@@ -34,5 +35,6 @@ public class PickupControllerEditor : Editor
 
         spriteTransform.localPosition = EditorGUILayout.Vector3Field("Item Offset", spriteTransform.localPosition);
         spriteTransform.localScale = EditorGUILayout.Vector3Field("Item Scale", spriteTransform.localScale);
+        EditorGUI.EndChangeCheck();
     }
 }

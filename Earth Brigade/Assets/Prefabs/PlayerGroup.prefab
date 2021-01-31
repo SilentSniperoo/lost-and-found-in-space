@@ -104,11 +104,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1031203266173860879}
+  spriteRenderer: {fileID: 1031203266767199363}
   cam: {fileID: 1031203266453225458}
   speed: {x: 10, y: 5}
   acceleration: {x: 5, y: 2.5}
   highBoundCamSize: 4.5
   lowBoundCamSize: 7
+  animateSpeed: 0.5
+  sprite2: {fileID: 21300000, guid: fc080b8cc8a230f428410604d952a9e5, type: 3}
 --- !u!114 &1031203266069055154
 MonoBehaviour:
   m_ObjectHideFlags: 0
