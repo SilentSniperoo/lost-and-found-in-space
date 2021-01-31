@@ -14,7 +14,8 @@ public class DialogueController : MonoBehaviour
     [HideInInspector, System.NonSerialized]
     public Dialogue nextUI = null;
 
-    PersonController person;
+    [HideInInspector, System.NonSerialized]
+    public PersonController person;
 
     public void targetPerson(PersonController personToTalkTo)
     {
@@ -36,6 +37,10 @@ public class DialogueController : MonoBehaviour
         if (person.problemSolved)
         {
             nextUI = thankYouUI;
+            nextUI.icon.sprite = person.getSprite(pickup.getSpriteRenderer(pickup.getSpriteTransform()));
+            nextUI.title.text = person.titleText;
+            nextUI.body.text = person.thankYouText;
+            nextUI.bodyTranslated.text = person.thankYouTextTranslated;
         }
         else
         {
@@ -43,7 +48,8 @@ public class DialogueController : MonoBehaviour
         }
     }
 
-    PickupController pickup;
+    [HideInInspector, System.NonSerialized]
+    public PickupController pickup;
 
     public void targetPickup(PickupController pickupToExamine)
     {
@@ -63,6 +69,9 @@ public class DialogueController : MonoBehaviour
         if (!pickup) return;
 
         nextUI = pickupUI;
+        nextUI.icon.sprite = pickup.getSprite(pickup.getSpriteRenderer(pickup.getSpriteTransform()));
+        nextUI.title.text = pickup.titleText;
+        nextUI.body.text = pickup.bodyText;
     }
 
     public void close()

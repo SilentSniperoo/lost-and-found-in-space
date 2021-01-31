@@ -14,19 +14,10 @@ public class PickupControllerEditor : Editor
         PickupController pickup = target as PickupController;
         if (!pickup) return;
 
-        Transform spriteTransform = pickup.transform.Find("Sprite");
-        if (!spriteTransform)
-        {
-            Debug.LogWarning("No child object named 'Sprite' on '" + pickup.gameObject.name + "'", pickup.gameObject);
-            return;
-        }
-
-        SpriteRenderer renderer = spriteTransform.GetComponent<SpriteRenderer>();
-        if (!renderer)
-        {
-            Debug.LogWarning("No 'SpriteRenderer' component on '" + spriteTransform.gameObject.name + "'", spriteTransform.gameObject);
-            return;
-        }
+        Transform spriteTransform = pickup.getSpriteTransform();
+        if (!spriteTransform) return;
+        SpriteRenderer renderer = pickup.getSpriteRenderer(spriteTransform);
+        if (!renderer) return;
 
         Sprite ownerSprite = EditorGUILayout.ObjectField("Owner Image", pickup.owner, typeof(Sprite), false) as Sprite;
         if (pickup.owner != ownerSprite)

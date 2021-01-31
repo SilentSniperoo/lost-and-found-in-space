@@ -32,6 +32,8 @@ public class InteractController : MonoBehaviour
         GameObject newTarget = null;
         foreach (GameObject potentialTarget in items)
         {
+            if (!potentialTarget.activeSelf) continue;
+
             Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
             dSqrToTarget = directionToTarget.sqrMagnitude;
             if (dSqrToTarget < closestDistanceSqr)
@@ -42,6 +44,8 @@ public class InteractController : MonoBehaviour
         }
         foreach (GameObject potentialTarget in people)
         {
+            if (!potentialTarget.activeSelf) continue;
+
             Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
             dSqrToTarget = directionToTarget.sqrMagnitude;
             if (dSqrToTarget < closestDistanceSqr)
@@ -62,7 +66,7 @@ public class InteractController : MonoBehaviour
             if (newTarget != previousTarget)
             {
                 currentTarget = newTarget;
-                if (previousTarget)
+                if (previousTarget && previousTarget.activeSelf)
                 {
                     previousTarget.SendMessage("Untargeted");
                 }
@@ -76,7 +80,7 @@ public class InteractController : MonoBehaviour
         }
         else
         {
-            if (previousTarget)
+            if (previousTarget && previousTarget.activeSelf)
             {
                 previousTarget.SendMessage("Untargeted");
             }

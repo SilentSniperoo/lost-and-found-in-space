@@ -8,6 +8,9 @@ public class PickupController : MonoBehaviour
     GameObject highlight;
     DialogueController dialogueController;
 
+    public string titleText = "Item Name";
+    public string bodyText = "Item description and more.";
+
     public Sprite owner;
 
     private void Awake()
@@ -58,5 +61,36 @@ public class PickupController : MonoBehaviour
         {
             dialogueController.examinePickup();
         }
+    }
+
+    public Transform getSpriteTransform()
+    {
+        Transform spriteTransform = transform.Find("Sprite");
+        if (!spriteTransform)
+        {
+            Debug.LogWarning("No child object named 'Sprite' on '" + gameObject.name + "'", gameObject);
+            return null;
+        }
+
+        return spriteTransform;
+    }
+
+    public SpriteRenderer getSpriteRenderer(Transform spriteTransform)
+    {
+        if (!spriteTransform) return null;
+
+        SpriteRenderer renderer = spriteTransform.GetComponent<SpriteRenderer>();
+        if (!renderer)
+        {
+            Debug.LogWarning("No 'SpriteRenderer' component on '" + spriteTransform.gameObject.name + "'", spriteTransform.gameObject);
+            return null;
+        }
+
+        return renderer;
+    }
+
+    public Sprite getSprite(SpriteRenderer spriteRenderer)
+    {
+        return spriteRenderer ? spriteRenderer.sprite : null;
     }
 }

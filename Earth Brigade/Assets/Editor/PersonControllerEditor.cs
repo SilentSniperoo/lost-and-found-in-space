@@ -14,19 +14,10 @@ public class PersonControllerEditor : Editor
         PersonController person = target as PersonController;
         if (!person) return;
 
-        Transform spriteTransform = person.transform.Find("Sprite");
-        if (!spriteTransform)
-        {
-            Debug.LogWarning("No child object named 'Sprite' on '" + person.gameObject.name + "'", person.gameObject);
-            return;
-        }
-
-        SpriteRenderer renderer = spriteTransform.GetComponent<SpriteRenderer>();
-        if (!renderer)
-        {
-            Debug.LogWarning("No 'SpriteRenderer' component on '" + spriteTransform.gameObject.name + "'", spriteTransform.gameObject);
-            return;
-        }
+        Transform spriteTransform = person.getSpriteTransform();
+        if (!spriteTransform) return;
+        SpriteRenderer renderer = person.getSpriteRenderer(spriteTransform);
+        if (!renderer) return;
 
         Sprite sprite = EditorGUILayout.ObjectField("Character Image", renderer.sprite, typeof(Sprite), false) as Sprite;
         if (renderer.sprite != sprite)
