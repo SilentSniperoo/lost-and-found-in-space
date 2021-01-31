@@ -6161,12 +6161,12 @@ PrefabInstance:
     - target: {fileID: 5360195426896186549, guid: 4146fab3c294f3a4e9335e351e0e6aa1,
         type: 3}
       propertyPath: buttonType
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7335041556534914956, guid: 4146fab3c294f3a4e9335e351e0e6aa1,
         type: 3}
       propertyPath: buttonType
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4146fab3c294f3a4e9335e351e0e6aa1, type: 3}

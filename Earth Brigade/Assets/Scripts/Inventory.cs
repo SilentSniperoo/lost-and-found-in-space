@@ -30,9 +30,11 @@ public class Inventory : MonoBehaviour
 
     public void GiveItem(int slot)
     {
-        if (slots[slot] && slots[slot].sprite == dialogueController.person.sprite1)
+        if (slots[slot] && slotData[slot].owner == dialogueController.person.sprite1)
         {
             dialogueController.person.problemSolved = true;
+            dialogueController.talkToPerson();
+            slots[slot].sprite = null;
         }
     }
 

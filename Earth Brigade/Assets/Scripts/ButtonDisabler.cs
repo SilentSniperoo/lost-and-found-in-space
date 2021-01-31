@@ -48,7 +48,8 @@ public class ButtonDisabler : MonoBehaviour
                 button.interactable = !inventoryFull;
                 break;
             case ButtonType.GivePickup:
-                button.interactable = inventory.slots[slot] && inventory.slots[slot].sprite;
+                button.interactable = inventory.slots[slot] && inventory.slots[slot].sprite
+                    && dialogueController.activeUI == dialogueController.questUI;
                 break;
             case ButtonType.TranslateText:
                 button.interactable = !dialogueController.isTextTranslated;
