@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ElevatorDoor : MonoBehaviour
 {
-    GameObject bottomFloorObject;
-    GameObject topFloorObject;
+    public GameObject bottomFloorObject;
+    public GameObject topFloorObject;
     GameObject highlight;
 
     public bool bottomFloor = true;
@@ -41,6 +41,7 @@ public class ElevatorDoor : MonoBehaviour
 
     void Interact()
     {
+        print("Switching floors");
         bottomFloorObject.SetActive(!bottomFloor);
         topFloorObject.SetActive(bottomFloor);
     }
@@ -48,16 +49,16 @@ public class ElevatorDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Transform player = FindObjectOfType<PlayerController>().transform;
-        if (Vector2.Distance(
-            new Vector2(player.position.x, player.position.y),
-            new Vector2(transform.position.x, transform.position.y)) < distance)
-        {
-            GetComponent<SpriteRenderer>().color = Color.clear;
-        }
-        else
-        {
-            GetComponent<SpriteRenderer>().color = Color.white;
-        }
+        //Transform player = FindObjectOfType<PlayerController>().transform;
+        //if (Vector2.Distance(
+        //    new Vector2(player.position.x, player.position.y),
+        //    new Vector2(transform.position.x, transform.position.y)) < distance)
+        //{
+        //    GetComponent<SpriteRenderer>().color = Color.clear;
+        //}
+        //else
+        //{
+        //    GetComponent<SpriteRenderer>().color = Color.white;
+        //}
     }
 }

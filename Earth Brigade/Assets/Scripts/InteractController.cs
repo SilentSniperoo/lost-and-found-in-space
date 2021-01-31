@@ -40,6 +40,7 @@ public class InteractController : MonoBehaviour
             if (!potentialTarget.activeSelf) continue;
 
             Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
+            directionToTarget.z = 0;
             dSqrToTarget = directionToTarget.sqrMagnitude;
             if (dSqrToTarget < closestDistanceSqr)
             {
@@ -52,6 +53,7 @@ public class InteractController : MonoBehaviour
             if (!potentialTarget.activeSelf) continue;
 
             Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
+            directionToTarget.z = 0;
             dSqrToTarget = directionToTarget.sqrMagnitude;
             if (dSqrToTarget < closestDistanceSqr)
             {
