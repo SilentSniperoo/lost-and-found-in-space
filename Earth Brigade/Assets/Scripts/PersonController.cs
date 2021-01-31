@@ -19,6 +19,8 @@ public class PersonController : MonoBehaviour
     public string titleText = "Person Name";
     public string thankYouText = "Gobbledeegook thank you text.";
     public string thankYouTextTranslated = "Thank you dialogue and more.";
+    public string questText = "Gobbledeegook quest text.";
+    public string questTextTranslated = "Quest dialogue and more.";
 
     public bool problemSolved = false;
 

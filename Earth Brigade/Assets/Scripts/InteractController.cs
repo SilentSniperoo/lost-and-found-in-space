@@ -25,6 +25,11 @@ public class InteractController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (FindObjectOfType<PlayerController>().inputCapturedByHUD)
+        {
+            return;
+        }
+
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
         float dSqrToTarget = 0;

@@ -28,6 +28,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void GiveItem(int slot)
+    {
+        if (slots[slot] && slots[slot].sprite == dialogueController.person.sprite1)
+        {
+            dialogueController.person.problemSolved = true;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

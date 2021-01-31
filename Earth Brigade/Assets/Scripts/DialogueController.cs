@@ -7,12 +7,16 @@ public class DialogueController : MonoBehaviour
 {
     public Dialogue thankYouUI;
     public Dialogue pickupUI;
-    public List<Dialogue> puzzleUI;
+    public Dialogue questUI;
+    //public List<Dialogue> puzzleUI;
 
     [HideInInspector, System.NonSerialized]
     public Dialogue activeUI = null;
     [HideInInspector, System.NonSerialized]
     public Dialogue nextUI = null;
+
+    [HideInInspector, System.NonSerialized]
+    public bool isTextTranslated = false;
 
     [HideInInspector, System.NonSerialized]
     public PersonController person;
@@ -34,17 +38,35 @@ public class DialogueController : MonoBehaviour
     {
         if (!person) return;
 
+        isTextTranslated = false;
+
         if (person.problemSolved)
         {
             nextUI = thankYouUI;
-            nextUI.icon.sprite = person.getSprite(pickup.getSpriteRenderer(pickup.getSpriteTransform()));
+            nextUI.icon.sprite = person.sprite1;
             nextUI.title.text = person.titleText;
             nextUI.body.text = person.thankYouText;
-            nextUI.bodyTranslated.text = person.thankYouTextTranslated;
         }
         else
         {
-            openPuzzleUI((int)person.problem);
+            nextUI = questUI;
+            nextUI.icon.sprite = person.sprite1;
+            nextUI.title.text = person.titleText;
+            nextUI.body.text = person.questText;
+            //openPuzzleUI((int)person.problem);
+        }
+    }
+
+    public void translateText()
+    {
+        isTextTranslated = true;
+        if (nextUI.body.text == person.thankYouText)
+        {
+            nextUI.body.text = person.thankYouTextTranslated;
+        }
+        else
+        {
+            nextUI.body.text = person.questTextTranslated;
         }
     }
 
@@ -120,11 +142,11 @@ public class DialogueController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                openPuzzleUI(1);
+                //openPuzzleUI(1);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                openPuzzleUI(2);
+                //openPuzzleUI(2);
             }
             else
             {
@@ -137,15 +159,15 @@ public class DialogueController : MonoBehaviour
         updateInputCaptured();
     }
 
-    void openPuzzleUI(int index)
-    {
-        if (index < 0 || index >= puzzleUI.Count)
-        {
-            Debug.LogWarning("There is no riddle at index: " + index);
-            return;
-        }
-        nextUI = puzzleUI[index];
-    }
+    //void openPuzzleUI(int index)
+    //{
+    //    if (index < 0 || index >= puzzleUI.Count)
+    //    {
+    //        Debug.LogWarning("There is no riddle at index: " + index);
+    //        return;
+    //    }
+    //    nextUI = puzzleUI[index];
+    //}
 
     void tryGoingToNextAnimation()
     {
