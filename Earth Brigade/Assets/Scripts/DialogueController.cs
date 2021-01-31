@@ -5,13 +5,47 @@ using UnityEngine.UI;
 
 public class DialogueController : MonoBehaviour
 {
-    public Dialogue dialogueUI;
-    public Dialogue riddleUI;
+    public Dialogue thankYouUI;
+    public List<Dialogue> puzzleUI;
 
     [HideInInspector, System.NonSerialized]
     public Dialogue activeUI = null;
     [HideInInspector, System.NonSerialized]
     public Dialogue nextUI = null;
+
+    PersonController person;
+
+    public void targetPerson(PersonController personToTalkTo)
+    {
+        person = personToTalkTo;
+    }
+
+    public void untargetPerson(PersonController personToTalkTo)
+    {
+        if (person == personToTalkTo)
+        {
+            person = null;
+        }
+    }
+
+    public void talkToPerson()
+    {
+        if (!person) return;
+
+        if (person.problemSolved)
+        {
+            nextUI = thankYouUI;
+        }
+        else
+        {
+            openPuzzleUI((int)person.problem);
+        }
+    }
+
+    public void close()
+    {
+        nextUI = null;
+    }
 
     bool animationPlaying
     {
@@ -38,34 +72,47 @@ public class DialogueController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.Escape))
         {
             close();
-            print(nextUI ? nextUI.gameObject.name : "null");
         }
         else if (Input.GetKey(KeyCode.RightShift)) // Debug cheat
         {
             if (Input.GetKeyDown(KeyCode.Alpha0))
             {
-                close();
-                print(nextUI ? nextUI.gameObject.name : "null");
+                if (activeUI)
+                {
+                    close();
+                }
+                else
+                {
+                    nextUI = thankYouUI;
+                }
             }
             else if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                nextUI = dialogueUI;
-                print(nextUI ? nextUI.gameObject.name : "null");
+                openPuzzleUI(1);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                nextUI = riddleUI;
-                print(nextUI ? nextUI.gameObject.name : "null");
+                openPuzzleUI(2);
             }
+            else
+            {
+                Debug.LogWarning("Waiting for cheat number key...");
+            }
+            print(nextUI ? nextUI.gameObject.name : "null");
         }
 
         tryGoingToNextAnimation();
         updateInputCaptured();
     }
 
-    public void close()
+    void openPuzzleUI(int index)
     {
-        nextUI = null;
+        if (index < 0 || index >= puzzleUI.Count)
+        {
+            Debug.LogWarning("There is no riddle at index: " + index);
+            return;
+        }
+        nextUI = puzzleUI[index];
     }
 
     void tryGoingToNextAnimation()
@@ -73,12 +120,10 @@ public class DialogueController : MonoBehaviour
         // If we are playing or already correct, early out
         if (animationPlaying)
         {
-            print("Animating");
             return;
         }
         if (activeUI == nextUI)
         {
-            print("Finished");
             return;
         }
 

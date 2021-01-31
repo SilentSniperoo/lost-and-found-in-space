@@ -10,11 +10,13 @@ public class InteractController : MonoBehaviour
     GameObject currentTarget;
 
     [SerializeField]
-    float maxSqrDist = 12;
+    float maxDist = 3.5f;
+    float maxSqrDist;
 
     // Start is called before the first frame update
     void Start()
     {
+        maxSqrDist = maxDist * maxDist;
         items = GameObject.FindGameObjectsWithTag("Item");
         people = GameObject.FindGameObjectsWithTag("Person");
         currentTarget = null;
@@ -49,7 +51,10 @@ public class InteractController : MonoBehaviour
             }
         }
 
-        Debug.Log(newTarget.ToString() + " " + closestDistanceSqr);
+        if (newTarget)
+        {
+            //Debug.Log(newTarget.ToString() + " " + closestDistanceSqr);
+        }
 
         if (closestDistanceSqr < maxSqrDist)
         {
@@ -64,8 +69,8 @@ public class InteractController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log("Interacting");
-                Debug.Log("Square distnce to target is: " + closestDistanceSqr.ToString());
+                //Debug.Log("Interacting");
+                //Debug.Log("Square distnce to target is: " + closestDistanceSqr.ToString());
                 currentTarget.SendMessage("Interact");
             }
         }

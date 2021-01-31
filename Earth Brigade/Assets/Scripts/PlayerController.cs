@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(DepthScaler))]
 public class PlayerController : MonoBehaviour
 {
     public GameObject sprite;
@@ -11,14 +11,11 @@ public class PlayerController : MonoBehaviour
     public Vector2 speed = new Vector2(10, 5);
     public Vector2 acceleration = new Vector2(10, 5);
 
-    public float highBound = 5;
-    public float lowBound = -8;
-    public float highBoundScale = 0.5f;
-    public float lowBoundScale = 1;
-    public float highBoundCamSize = 4;
-    public float lowBoundCamSize = 5;
+    public float highBoundCamSize = 5.5f;
+    public float lowBoundCamSize = 7;
 
     Rigidbody2D rigid;
+    DepthScaler scaler;
 
     bool mouseIsMostRecent = false;
     Vector3 mouseWorldPosition = Vector2.zero;
@@ -30,6 +27,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        scaler = GetComponent<DepthScaler>();
     }
 
     Vector2 getInput()
@@ -84,8 +82,6 @@ public class PlayerController : MonoBehaviour
             sprite.transform.localScale = new Vector3(1, 1, 1);
         }
 
-        float heightRatio = (transform.position.y - lowBound) / (highBound - lowBound);
-        transform.localScale = Vector3.one * Mathf.LerpUnclamped(lowBoundScale, highBoundScale, heightRatio);
-        cam.orthographicSize = Mathf.Lerp(lowBoundCamSize, highBoundCamSize, heightRatio);
+        cam.orthographicSize = Mathf.LerpUnclamped(lowBoundCamSize, highBoundCamSize, scaler.depthRatio);
     }
 }

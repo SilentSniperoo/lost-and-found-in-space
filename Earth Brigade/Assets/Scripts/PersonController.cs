@@ -2,15 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Problem
+{
+    Riddle,
+    MissingWords,
+    JumbledSentences,
+    FlippedAndRotatedWords
+}
+
+[RequireComponent(typeof(DepthScaler))]
 public class PersonController : MonoBehaviour
 {
-    //[SerializeField]
-    //GameObject highlight;
+    GameObject highlight;
+    DialogueController dialogueController;
+
+    public bool problemSolved = false;
+
+    public Problem problem;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        highlight = transform.Find("Highlight").gameObject;
+        dialogueController = FindObjectOfType<DialogueController>();
+        Untargeted();
     }
 
     // Update is called once per frame
@@ -20,19 +35,33 @@ public class PersonController : MonoBehaviour
 
     void Targeted()
     {
-        Debug.Log("targeted");
-        GameObject highlight = transform.Find("Highlight").gameObject;
-        highlight.GetComponent<SpriteRenderer>().enabled = true;
+        if (highlight)
+        {
+            highlight.GetComponent<SpriteRenderer>().enabled = true;
+        }
+        if (dialogueController)
+        {
+            dialogueController.targetPerson(this);
+        }
     }
 
     void Untargeted()
     {
-        GameObject highlight = transform.Find("Highlight").gameObject;
-        highlight.GetComponent<SpriteRenderer>().enabled = false;
-    }    
+        if (highlight)
+        {
+            highlight.GetComponent<SpriteRenderer>().enabled = false;
+        }
+        if (dialogueController)
+        {
+            dialogueController.untargetPerson(this);
+        }
+    }
 
     void Interact()
     {
-        Debug.Log("I was interacted with!");
+        if (dialogueController)
+        {
+            dialogueController.talkToPerson();
+        }
     }
 }
