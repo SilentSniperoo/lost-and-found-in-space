@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EndController : MonoBehaviour
 {
@@ -9,25 +11,28 @@ public class EndController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpriteRenderer sr = this.GetComponent<SpriteRenderer>();
+        Image image = this.GetComponent<Image>();
 
         if (ScoreStatus.Score < 4)
         {
-            sr.sprite = playerSpriteArray[0];
+            image.sprite = playerSpriteArray[0];
         }
         else if (ScoreStatus.Score < 8)
         {
-            sr.sprite = playerSpriteArray[1];
+            image.sprite = playerSpriteArray[1];
         }
         else
         {
-            sr.sprite = playerSpriteArray[2];
+            image.sprite = playerSpriteArray[2];
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.anyKeyDown)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }
